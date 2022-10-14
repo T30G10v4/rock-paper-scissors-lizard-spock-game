@@ -2,31 +2,11 @@ const choose = ["ROCK","PAPER","SCISSORS","LIZARD","SPOCK"];
 
 let playerChoice;
 
-const playerChoiceDOM = document.getElementsByClassName("choice");
+do {
 
+    playerChoice = prompt("Insert a choice from: 0 = rock, 1 = paper, 2 = scissors, 3 = lizard and 4 = spock");
 
-for(let i = 0; i<5 ; i++) {
-
-    playerChoiceDOM[i].addEventListener("click", function() {
-
-        playerChoice = i;
-
-    });
-
-}
-
-const playerSay = document.getElementById("player-say");
-console.log(playerSay);
-playerSay.innerHTML += choose[playerChoice];
-console.log(choose[playerChoice]);
-
-// do {
-
-//     playerChoice = prompt("Insert a choice from: 0 = rock, 1 = paper, 2 = scissors, 3 = lizard and 4 = spock");
-
-// } while (playerChoice < 0 || playerChoice > 4)
-
-
+} while (playerChoice < 0 || playerChoice > 4)
 
 /*
 NULL = TIE, 1 = PLAYER, 0 = COMPUTER
@@ -46,30 +26,21 @@ const gameMatrix = [
     [true,false,true,false,null]
 ];
 
+const computerChoice = Math.floor(Math.random() * 5);
 
-const goDOM = document.getElementById("go");
+const game = gameMatrix[playerChoice][computerChoice];
 
-goDOM.addEventListener("click", function() {
+let winner = "Player WINS!!! :D";
 
-    const computerChoice = Math.floor(Math.random() * 5);
+if (game === null) {
+    winner = "It's a TIE!!!";
 
-    const game = gameMatrix[playerChoice][computerChoice];
+} else if (!game) {
 
-    let winner = "Player WINS!!! :D";
+    winner = "Computer wins... D:";
 
-    if (game === null)
-    {
-        winner = "It's a TIE!!!";
+}
 
-
-    } else if (!game) {
-
-        winner = "Computer wins... D:";
-
-    }
-
-    console.log("Player's choice = ", choose[playerChoice]);
-    console.log("Computer's choice = ", choose[computerChoice]);
-    console.log(winner);
-
-});
+console.log("Player's choice = ", choose[playerChoice]);
+console.log("Computer's choice = ", choose[computerChoice]);
+console.log(winner);
